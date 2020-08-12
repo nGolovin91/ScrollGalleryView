@@ -44,6 +44,10 @@ public class ScrollGalleryView extends LinearLayout {
 
     // Options
     private int thumbnailSize; // width and height in pixels
+    private int thumbnailMarginStart;
+    private int thumbnailMarginEnd;
+    private int thumbnailMarginTop;
+    private int thumbnailMarginBottom;
     private boolean zoomEnabled;
     private boolean isThumbnailsHidden;
     private boolean hideThumbnailsOnClick;
@@ -202,7 +206,7 @@ public class ScrollGalleryView extends LinearLayout {
             info.getLoader().loadThumbnail(getContext(), thumbnail, new MediaLoader.SuccessCallback() {
                 @Override
                 public void onSuccess() {
-                    thumbnail.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                    thumbnail.setScaleType(ImageView.ScaleType.FIT_XY);
                 }
             });
 
@@ -228,6 +232,14 @@ public class ScrollGalleryView extends LinearLayout {
 
     public ScrollGalleryView setThumbnailSize(int thumbnailSize) {
         this.thumbnailSize = thumbnailSize;
+        return this;
+    }
+
+    public ScrollGalleryView setThumbnailMargins(int start, int top, int end, int bottom) {
+        thumbnailMarginStart = start;
+        thumbnailMarginTop = top;
+        thumbnailMarginEnd = end;
+        thumbnailMarginBottom = bottom;
         return this;
     }
 
@@ -384,7 +396,10 @@ public class ScrollGalleryView extends LinearLayout {
 
     private ImageView addThumbnail(Bitmap image) {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(thumbnailSize, thumbnailSize);
-        lp.setMargins(10, 10, 10, 10);
+        lp.setMargins(thumbnailMarginStart > 0 ? thumbnailMarginStart : 10,
+                thumbnailMarginTop > 0 ? thumbnailMarginTop : 10,
+                thumbnailMarginEnd > 0 ? thumbnailMarginEnd : 10,
+                thumbnailMarginBottom > 0 ? thumbnailMarginBottom : 10);
         Bitmap thumbnail = createThumbnail(image);
 
         ImageView thumbnailView = createThumbnailView(lp, thumbnail);

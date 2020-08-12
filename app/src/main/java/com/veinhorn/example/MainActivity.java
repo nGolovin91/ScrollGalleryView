@@ -39,11 +39,10 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         scrollGalleryView
-                .setThumbnailSize(200)
+                .setThumbnailSize(300)
                 .setZoom(true)
                 .withHiddenThumbnails(false)
                 .hideThumbnailsOnClick(true)
-                .hideThumbnailsAfter(5000)
                 .addOnImageClickListener((position) -> {
                     Log.i(getClass().getName(), "You have clicked on image #" + position);
                 })
