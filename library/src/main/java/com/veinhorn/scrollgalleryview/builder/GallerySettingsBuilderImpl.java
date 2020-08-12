@@ -28,6 +28,15 @@ public class GallerySettingsBuilderImpl implements GallerySettingsBuilder {
     }
 
     @Override
+    public GallerySettingsBuilder thumbnailMargins(int start, int top, int end, int bottom) {
+        gallerySettings.setThumbnailMarginStart(start);
+        gallerySettings.setThumbnailMarginTop(top);
+        gallerySettings.setThumbnailMarginEnd(end);
+        gallerySettings.setThumbnailMarginBottom(bottom);
+        return this;
+    }
+
+    @Override
     public GallerySettings build() {
         return gallerySettings;
     }
