@@ -23,7 +23,7 @@ public class MainActivity extends FragmentActivity {
                 .settings(
                         GallerySettings
                                 .from(getSupportFragmentManager())
-                                .thumbnailSize(100)
+                                .thumbnailSize(300)
                                 .enableZoom(true)
                                 .build()
                 )

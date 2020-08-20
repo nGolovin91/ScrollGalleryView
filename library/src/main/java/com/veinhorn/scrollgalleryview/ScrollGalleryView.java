@@ -128,7 +128,11 @@ public class ScrollGalleryView extends LinearLayout {
         horizontalScrollView = (HorizontalScrollView) findViewById(R.id.thumbnails_scroll_view);
 
         thumbnailsContainer = (LinearLayout) findViewById(R.id.thumbnails_container);
-        thumbnailsContainer.setPadding(displayProps.x / 2, 0, displayProps.x / 2, 0);
+        this.thumbnailsContainer.setPadding(displayProps.x / 2 - thumbnailSize /2 - (thumbnailMarginStart > 0 ? thumbnailMarginStart : 10), 0,
+                displayProps.x / 2 - thumbnailSize /2 - (thumbnailMarginEnd > 0 ? thumbnailMarginEnd : 10), 0);
+        horizontalScrollView.setSmoothScrollingEnabled(true);
+
+        
     }
 
     public ScrollGalleryView setFragmentManager(FragmentManager fragmentManager) {
@@ -232,6 +236,8 @@ public class ScrollGalleryView extends LinearLayout {
 
     public ScrollGalleryView setThumbnailSize(int thumbnailSize) {
         this.thumbnailSize = thumbnailSize;
+        this.thumbnailsContainer.setPadding(displayProps.x / 2 - thumbnailSize /2 - (thumbnailMarginStart > 0 ? thumbnailMarginStart : 10), 0,
+                displayProps.x / 2 - thumbnailSize /2 - (thumbnailMarginEnd > 0 ? thumbnailMarginEnd : 10), 0);
         return this;
     }
 
@@ -240,6 +246,8 @@ public class ScrollGalleryView extends LinearLayout {
         thumbnailMarginTop = top;
         thumbnailMarginEnd = end;
         thumbnailMarginBottom = bottom;
+        this.thumbnailsContainer.setPadding(displayProps.x / 2 - thumbnailSize /2 - (thumbnailMarginStart > 0 ? thumbnailMarginStart : 10), 0,
+                displayProps.x / 2 - thumbnailSize /2 - (thumbnailMarginEnd > 0 ? thumbnailMarginEnd : 10), 0);
         return this;
     }
 

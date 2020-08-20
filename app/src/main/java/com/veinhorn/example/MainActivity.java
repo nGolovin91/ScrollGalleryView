@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 .setZoom(true)
                 .withHiddenThumbnails(false)
                 .hideThumbnailsOnClick(true)
+                .setThumbnailMargins(10, 0, 10, 10)
                 .addOnImageClickListener((position) -> {
                     Log.i(getClass().getName(), "You have clicked on image #" + position);
                 })
